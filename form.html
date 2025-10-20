@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulario | App Shell PWA</title>
+
+  <!-- UI básica (App Shell) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Select2 se cargará dinámicamente solo al mostrar la página -->
+</head>
+<body class="font-[Inter] bg-gray-50 text-gray-900">
+  <header class="sticky top-0 z-10 bg-white/80 backdrop-blur border-b">
+    <nav class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a class="text-xl font-extrabold" href="./index.html">AppShell</a>
+      <ul class="flex gap-4 text-sm">
+        <li><a class="link" href="./index.html">Inicio</a></li>
+        <li><a class="link" href="./calendar.html">Calendario</a></li>
+        <li><a class="link font-semibold" aria-current="page" href="./form.html">Formulario</a></li>
+        <li><a class="link" href="./about.html">Acerca de</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-2xl font-bold mb-6">Formulario con Select2</h1>
+    <form class="bg-white rounded-2xl shadow p-6 space-y-6" onsubmit="return false;">
+      <label class="block">
+        <span class="block text-sm font-medium mb-2">Selecciona tus lenguajes favoritos</span>
+        <select id="langs" class="w-full" multiple>
+          <option value="js" selected>JavaScript</option>
+          <option value="py">Python</option>
+          <option value="java">Java</option>
+          <option value="dart">Dart</option>
+          <option value="go">Go</option>
+        </select>
+      </label>
+      <button class="btn" type="button" id="show">Mostrar selección</button>
+      <p id="out" class="text-sm text-gray-600"></p>
+    </form>
+  </main>
+
+  <script>
+    function loadCSS(href) {
+      return new Promise((res, rej) => {
+        const l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = href;
+        l.crossOrigin = 'anonymous';
+        l.onload = () => res();
+        l.onerror = (e) => rej(e);
+        document.head.appendChild(l);
+      });
+    }
+    function loadScript(src) {
+      return new Promise((res, rej) => {
+        const s = document.createElement('script');
+        s.src = src;
+        s.crossOrigin = 'anonymous';
+        s.onload = () => res();
+        s.onerror = (e) => rej(e);
+        document.body.appendChild(s);
+      });
+    }
+
+    async function initSelect2() {
+      try {
+        await loadCSS('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css');
+        await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js');
+        await loadScript('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js');
+
+        // inicializar Select2
+        $(function(){
+          $('#langs').select2({ width: '100%' });
+          $('#show').on('click', function(){
+            const vals = $('#langs').val() || [];
+            document.getElementById('out').textContent = 'Elegiste: ' + vals.join(', ');
+          });
+        });
+      } catch (e) {
+        console.warn('No se pudo cargar Select2/jQuery dinámicamente', e);
+        document.getElementById('out').textContent = 'Select2 no disponible.';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initSelect2);
+  </script>
+
+  <script src="./register.js"></script>
+</body>
+</html>

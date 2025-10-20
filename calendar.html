@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calendario | App Shell PWA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js" defer crossorigin="anonymous"></script>
+</head>
+<body class="font-[Inter] bg-gray-50 text-gray-900">
+  <header class="sticky top-0 z-10 bg-white/80 backdrop-blur border-b">
+    <nav class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a class="text-xl font-extrabold" href="./index.html">AppShell</a>
+      <ul class="flex gap-4 text-sm">
+        <li><a class="link" href="./index.html">Inicio</a></li>
+        <li><a class="link font-semibold" aria-current="page" href="./calendar.html">Calendario</a></li>
+        <li><a class="link" href="./form.html">Formulario</a></li>
+        <li><a class="link" href="./about.html">Acerca de</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-2xl font-bold mb-4">Calendario</h1>
+    <div id="calendar" class="bg-white rounded-2xl shadow p-4"></div>
+  </main>
+
+  
+  <script src="./register.js"></script>
+  <script>
+    function initCalendar() {
+      if (!window.FullCalendar) {
+        return setTimeout(initCalendar, 150);
+      }
+      const el = document.getElementById('calendar');
+      const cal = new FullCalendar.Calendar(el, {
+        initialView: 'dayGridMonth',
+        headerToolbar: { left: 'title', center: '', right: 'prev,next' },
+        events: [
+          { title: 'Evento Demo', start: new Date().toISOString().slice(0,10) }
+        ]
+      });
+      cal.render();
+    }
+    document.addEventListener('DOMContentLoaded', initCalendar);
+  </script>
+</body>
+</html>
