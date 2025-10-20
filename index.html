@@ -1,49 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home | App Shell PWA</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home | App Shell PWA</title>
 
-  <!-- UI básica (App Shell) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- UI básica (App Shell) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body class="font-[Inter] bg-gray-50 text-gray-900">
-  <header class="sticky top-0 z-10 bg-white/80 backdrop-blur border-b">
-    <nav class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a class="text-xl font-extrabold" href="./index.html">AppShell</a>
-      <ul class="flex gap-4 text-sm">
-        <li><a class="link" href="./index.html">Inicio</a></li>
-        <li><a class="link" href="./calendar.html">Calendario</a></li>
-        <li><a class="link" href="./form.html">Formulario</a></li>
-        <li><a class="link" href="./about.html">Acerca de</a></li>
-      </ul>
-    </nav>
-  </header>
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#000000" />
 
-  <main class="max-w-4xl mx-auto px-4 py-10">
-    <h1 class="text-3xl font-bold mb-2">Bienvenido</h1>
-    <p class="mb-6">Esta es una aplicacion de prueba</p>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="font-[Inter] bg-gray-50 text-gray-900">
+    <header class="sticky top-0 z-10 bg-white/80 backdrop-blur border-b">
+      <nav
+        class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <a class="text-xl font-extrabold" href="./index.html">AppShell</a>
+        <ul class="flex gap-4 text-sm">
+          <li><a class="link" href="./index.html">Inicio</a></li>
+          <li><a class="link" href="./calendar.html">Calendario</a></li>
+          <li><a class="link" href="./form.html">Formulario</a></li>
+          <li><a class="link" href="./about.html">Acerca de</a></li>
+        </ul>
+      </nav>
+    </header>
 
-    <section class="grid sm:grid-cols-2 gap-4">
-      <a class="card" href="./calendar.html">
-        <h2 class="card-title">Calendario (FullCalendar)</h2>
-      </a>
-      <a class="card" href="./form.html">
-        <h2 class="card-title">Formulario (Select2)</h2>
-      </a>
-      <a class="card" href="./about.html">
-        <h2 class="card-title">Acerca de</h2>
-      </a>
-    </section>
+    <main class="max-w-4xl mx-auto px-4 py-10">
+      <h1 class="text-3xl font-bold mb-2">Bienvenido</h1>
+      <p class="mb-6">Esta es una aplicacion de prueba</p>
 
-  </main>
+      <section class="grid sm:grid-cols-2 gap-4">
+        <a class="card" href="./calendar.html">
+          <h2 class="card-title">Calendario (FullCalendar)</h2>
+        </a>
+        <a class="card" href="./form.html">
+          <h2 class="card-title">Formulario (Select2)</h2>
+        </a>
+        <a class="card" href="./about.html">
+          <h2 class="card-title">Acerca de</h2>
+        </a>
+      </section>
+    </main>
 
-  <script src="./register.js"></script>
-</body>
+    <script src="./register.js"></script>
+  </body>
 </html>
